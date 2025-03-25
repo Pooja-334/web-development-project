@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function grade() {
+            let score = parseFloat(document.getElementById("inputfield").value);
+            let grade = "";
+            if (score >= 80 && score <= 100) {
+                grade = "A";
+            }
+            else if (score >= 60 && score < 80) {
+                grade = "B";
+            }
+            else if (score >= 40 && score < 60) {
+                grade = "C";
+            }
+            else if (score >= 0 && score < 40) {
+                grade = "F";
+            } else {
+                grade = "Invalid score"; 
+            }
+            document.getElementById("grade_span").innerHTML = grade;
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <h1>Grading scale</h1>
+        <input placeholder="Enter score" id="inputfield"/>
+        <button onclick="grade()">Submit</button>
+        <span id="grade_span"></span>
+    </div>
+</body>
+</html>

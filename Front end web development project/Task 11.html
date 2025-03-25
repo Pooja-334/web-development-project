@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <h1>Sum Calculation</h1>
+    <input id="input_a" placeholder="Enter A" type="number"/>
+    <input id="input_b" placeholder="Enter B" type="number"/>
+    <button onclick="calculate()">Calculate</button>
+    <p id="result"></p> 
+
+    <script>
+        function calculate() {
+            let a = parseInt(document.getElementById('input_a').value);
+            let b = parseInt(document.getElementById('input_b').value);
+            if (a > b) {
+                let temp = a;
+                a = b;
+                b = temp;
+            }
+            let sum = 0;
+            for (let i = a; i <= b; i++) {
+                sum += i;
+            }
+            document.getElementById('result').innerHTML = `The sum of numbers from ${a} to ${b} is: ${sum}`;
+        }
+    </script>
+</body>
+</html>

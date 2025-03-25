@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Call Stack</title>
+</head>
+<body>
+    <h1>Task Call Stack</h1>
+    <div id="task">
+        <input type="text" id="task-name" placeholder="Enter Task Name" />
+        <button onclick="addTask()">Add Task</button>
+        <button onclick="undoTask()">Undo Task</button>
+    </div>
+    <script>
+        function addTask() {
+            const taskName = document.getElementById('task-name').value.trim();
+            if (taskName === '') {
+                alert('Please enter a valid task name');
+                return;
+            }
+            taskStack.push(taskName);
+            document.getElementById('task-name').value = '';
+        }
+        function undoTask() {
+            if (taskStack.length === 0) {
+                alert('No tasks to undo');
+                return;
+            }
+            taskStack.pop();
+            updatePipeline();
+        }
+        function updatePipeline() {
+            const taskList = document.getElementById('task-list');
+            taskList.innerHTML = ''; 
+            taskStack.forEach(task => {
+                const listItem = document.createElement('li');
+                listItem.textContent = task;
+                taskList.appendChild(listItem);
+            });
+        }
+    </script>
+</body>
+</html>

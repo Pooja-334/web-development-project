@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function update(){
+                var inputText = document.getElementById('inputField').value;
+                document.getElementById('outputField').value = inputText;
+            }
+        </script>
+    </head>
+    <body>
+        <input id="inputField" placeholder="Input Text here" onkeyup="update();" />
+        <input id="outputField" placeholder="Output generated here" disabled/>
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            let Student = {
+                name: "Pooja Kuchanpally",
+                age: "25",
+                gender: "female",
+                Address: "101 South Burbank Dr",  
+                major: "Computer Science (Masters)",
+                university: "XYZ University",
+                description: function() {
+                    return "This is " + this.name + ", a " + this.age + " years old " + 
+                    this.gender + " who is pursuing a Master's degree in " + this.major + 
+                    " from " + this.university + ".";
+                }
+            };
+
+            function show_student_info() {
+                document.getElementById("demo_div").innerHTML = Student.description();
+            }
+
+            function insert_info() {
+                let name = document.getElementById("name").value;
+                let age = document.getElementById("age").value;
+                let gender = document.getElementById("gender").value;
+                let Address = document.getElementById("Address").value;
+                let major = document.getElementById("major").value;
+                let university = document.getElementById("university").value;
+
+                // Updating the object properties
+                Student.name = name;
+                Student.age = age;
+                Student.gender = gender;
+                Student.Address = Address; 
+                Student.major = major;
+                Student.university = university;
+                
+                
+                document.getElementById("name").value = '';
+                document.getElementById("age").value = '';
+                document.getElementById("gender").value = '';
+                document.getElementById("Address").value = '';
+                document.getElementById("major").value = '';
+                document.getElementById("university").value = '';
+
+                show_student_info();
+            }
+        </script>
+    </head>
+    <body>
+        <div>
+            <input id="name" placeholder="Enter name"/>
+            <input id="age" placeholder="Enter age"/>
+            <input id="gender" placeholder="Enter gender"/>
+            <input id="Address" placeholder="Enter Address"/>
+            <input id="major" placeholder="Enter major"/>
+            <input id="university" placeholder="Enter university"/>
+            <button onclick="insert_info()">Insert Info</button>
+            <button onclick="show_student_info()">Show Student Info</button>
+        </div>
+        <div id="demo_div"></div>
+    </body>
+</html>

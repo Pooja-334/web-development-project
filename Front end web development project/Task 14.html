@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Display Content for 5 Seconds</title>
+        <style>
+            #content {
+                font-size: 24px;
+                text-align: center;
+                margin-top: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            This content will be displayed for the first 5 seconds.
+        </div>
+
+        <script>
+            
+            setTimeout(function() {
+                document.getElementById("content").style.display = "none";
+            }, 5000);  
+        </script>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Operations</title>
+</head>
+<body>
+    <h1>JavaScript Arithmetic Operations</h1>
+
+    <p id="addition"></p>
+    <p id="subtraction"></p>
+    <p id="multiplication"></p>
+    <p id="division"></p>
+    <p id="modulo"></p>
+
+    <script>
+        let x = 5;
+
+        // Addition
+        let resultAdd = x += 10;
+        document.getElementById("addition").innerHTML = "Addition (x += 10): " + resultAdd;
+
+        // Subtraction
+        let resultSub = x -= 15;
+        document.getElementById("subtraction").innerHTML = "Subtraction (x -= 15): " + resultSub;
+
+        // Multiplication
+        let resultMul = x *= 5;
+        document.getElementById("multiplication").innerHTML = "Multiplication (x *= 5): " + resultMul;
+
+        // Division
+        let resultDiv = x /= 5;
+        document.getElementById("division").innerHTML = "Division (x /= 5): " + resultDiv;
+
+        // Modulo
+        let resultMod = x %= 10;
+        document.getElementById("modulo").innerHTML = "Modulo (x %= 10): " + resultMod;
+    </script>
+</body>
+</html>

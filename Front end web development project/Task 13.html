@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f9;
+                margin: 0;
+                padding: 0;
+            }
+
+           
+            .container {
+                width: 50%;
+                margin: 0 auto;
+                padding-top: 20px;
+            }
+
+            
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 20px;
+            }
+
+            table, th, td {
+                border: 1px solid #ddd;
+            }
+
+            th, td {
+                padding: 10px;
+                text-align: left;
+            }
+
+          
+            input, button {
+                width: 100%;
+                padding: 10px;
+                margin: 8px 0;
+                border: 2px solid #ccc;
+                border-radius: 5px;
+                box-sizing: border-box;
+            }
+
+            
+            .green-btn {
+                background-color: #4CAF50;
+                color: white;
+                cursor: pointer;
+                font-size: 16px;
+            }
+
+            .green-btn:hover {
+                background-color: #45a049;
+            }
+
+            
+            .red-btn {
+                background-color: #f44336;
+                color: white;
+                cursor: pointer;
+                font-size: 16px;
+            }
+
+            .red-btn:hover {
+                background-color: #e53935;
+            }
+
+            
+            #demo_div {
+                margin-top: 20px;
+                font-size: 18px;
+                padding: 15px;
+                background-color: #d6e8f7;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease, background-color 0.3s ease;
+            }
+
+            
+            #demo_div:hover {
+                background-color: #a3c6e7;
+                transform: scale(1.05);
+            }
+
+            
+            h1 {
+                text-align: center;
+                color: #333;
+                background-color: lightslategrey;
+            }
+
+           
+            label {
+                font-size: 16px;
+                color: #333;
+                margin-bottom: 5px;
+                display: block;
+            }
+        </style>
+
+        <script>
+            function Person(name, age, city, occupation) {
+                this.name = name;
+                this.age = age;
+                this.city = city;
+                this.occupation = occupation;
+                
+                this.description = function() {
+                    return "Name: " + this.name + "Age: " + this.age + 
+                        "City: " + this.city + "Occupation: " + this.occupation;
+                };
+            }
+
+            let person = new Person("John Doe", "30", "New York", "Software Engineer");
+
+            function show_all_data() {
+                document.getElementById("demo_div").innerHTML = person.description();
+            }
+
+            function insert_data() {
+                let name = document.getElementById("name").value;
+                let age = document.getElementById("age").value;
+                let city = document.getElementById("city").value;
+                let occupation = document.getElementById("occupation").value;
+
+                person = new Person(name, age, city, occupation);
+                
+                document.getElementById("name").value = '';
+                document.getElementById("age").value = '';
+                document.getElementById("city").value = '';
+                document.getElementById("occupation").value = '';
+
+                show_all_data();
+            }
+
+            function clear_input() {
+                document.getElementById("name").value = '';
+                document.getElementById("age").value = '';
+                document.getElementById("city").value = '';
+                document.getElementById("occupation").value = '';
+            }
+
+            function clear_output() {
+                document.getElementById("demo_div").innerHTML = '';
+            }
+
+            
+            function search_data() {
+                let searchTerm = document.getElementById("search_input").value.toLowerCase();
+
+                if (searchTerm === '') {
+                    document.getElementById("demo_div").innerHTML = 'Please enter a search term.';
+                    return;
+                }
+
+                
+                if (person.name.toLowerCase().includes(searchTerm) || person.city.toLowerCase().includes(searchTerm)) {
+                    document.getElementById("demo_div").innerHTML = person.description();
+                } else {
+                    document.getElementById("demo_div").innerHTML = 'No match found.';
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Person Information</h1>
+            
+            <table>
+                <tr>
+                    <td><label for="name">Name:</label></td>
+                    <td><input id="name" placeholder="Enter name"/></td>
+                </tr>
+                <tr>
+                    <td><label for="age">Age:</label></td>
+                    <td><input id="age" placeholder="Enter age"/></td>
+                </tr>
+                <tr>
+                    <td><label for="city">City:</label></td>
+                    <td><input id="city" placeholder="Enter city"/></td>
+                </tr>
+                <tr>
+                    <td><label for="occupation">Occupation:</label></td>
+                    <td><input id="occupation" placeholder="Enter occupation"/></td>
+                </tr>
+            </table>
+            
+            <button class="green-btn" onclick="insert_data()">Insert Data</button>
+            <button class="red-btn" onclick="clear_input()">Clear Input</button>
+            <button class="green-btn" onclick="show_all_data()">Show All Data</button>
+            <button class="red-btn" onclick="clear_output()">Clear Output</button>
+            
+            <br><br>
+
+            
+            <label for="search_input">Search by Name or City:</label>
+            <input type="text" id="search_input" placeholder="Enter name or city to search"/>
+            <button class="green-btn" onclick="search_data()">Search</button>
+        </div>
+
+        <div id="demo_div"></div>
+    </body>
+</html>

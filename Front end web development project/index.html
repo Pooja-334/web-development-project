@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Project Gallery</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      display: flex;
+      min-height: 100vh;
+      background: url('https://media.istockphoto.com/id/1446486926/vector/front-and-back-end-of-development-responsive-web-design-website-interface-coding-and.jpg?s=612x612&w=0&k=20&c=EygMvCkwJwl1_tifxDKIP2ornYNxZhKxlFh7--HfXBM=') no-repeat center center/cover; /* Add your image here */
+      color: #333;
+      font-size: 16px;
+      background-attachment: fixed;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: rgba(52, 124, 219, 0.9); 
+      color: #ecf0f1;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar h2 {
+      font-size: 26px;
+      margin-bottom: 40px;
+      text-align: center;
+      color: #ecf0f1;
+      font-weight: 500;
+    }
+
+    #taskList {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    #taskList li {
+      margin-bottom: 15px;
+      cursor: pointer;
+      padding: 15px;
+      background-color: #2c3e50;
+      border-radius: 8px;
+      font-size: 18px;
+      text-align: center;
+      transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+      font-weight: 500;
+    }
+
+    #taskList li:hover {
+      background-color: #1abc9c;
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      color: #fff;
+    }
+
+    #taskList li.active {
+      background-color: #2980b9;
+      color: #fff;
+    }
+
+    .content {
+      flex: 1;
+      padding: 40px;
+      background-color: rgba(255, 255, 255, 0.9); 
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      box-shadow: 4px 0 8px rgba(0, 0, 0, 0.1);
+      border-left: 1px solid #ddd;
+    }
+
+    iframe {
+      width: 100%;
+      height: 80vh;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Header background color change */
+    .header {
+      background: linear-gradient(to right, #2980b9, #6dd5fa); /* Gradient background for a modern look */
+      padding: 15px 30px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      border-radius: 12px;
+      color: #ecf0f1;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      background-color: #34495e;
+      color: #ecf0f1;
+      padding: 10px 0;
+      font-size: 14px;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    footer a {
+      color: #ecf0f1;
+      text-decoration: none;
+      margin: 0 8px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #1abc9c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <aside class="sidebar">
+      <h2>My Class Projects</h2>
+      <ul id="taskList"></ul>
+    </aside>
+    <main class="content">
+      <iframe id="taskFrame" src="" frameborder="0"></iframe>
+    </main>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Pooja | <a href="https://github.com/Pooja-334" target="_blank">GitHub</a> | <a href="https://www.linkedin.com/in/poojakuchanpally" target="_blank">LinkedIn</a></p>
+  </footer>
+
+  <script>
+    const tasks = [
+      { title: "Task 1: Expectation Document", file: "task 1.html" },
+      { title: "Task 2: Basic HTML Styling", file: "task 2.html" },
+      { title: "Task 3: CSS hover", file: "task 3.html" },
+      { title: "Task 4: Welcome to JS", file: "task 4.html" },
+      { title: "Task 5: Calculator with JS", file: "task 5.html" },
+      { title: "Task 6: Github Integration", file: "task 6.html" },
+      { title: "Task 7: Console Output", file: "task 7.html" },
+      { title: "Task 8: String Operation", file: "task 8.html" },
+      { title: "Task 9: Conditions", file: "task 9.html" },
+      { title: "Task 10: Call Stack with array", file: "task 10.html" },
+      { title: "Task 11: Loops", file: "task 11.html" },
+      { title: "Task 12: Task 12", file: "task 12.html" },
+      { title: "Task 13: Objects", file: "task 13.html" },
+      { title: "Task 14: Functions", file: "task 14.html" },
+      { title: "Task 15: Class & Bootstrap", file: "task 15.html" },
+      { title: "Task 16: JSON", file: "task 16.html" }
+    ];
+
+    const taskList = document.getElementById('taskList');
+    const taskFrame = document.getElementById('taskFrame');
+
+    tasks.forEach((task, index) => {
+      const li = document.createElement('li');
+      li.textContent = task.title;
+      li.addEventListener('click', () => {
+        document.querySelectorAll('#taskList li').forEach(el => el.classList.remove('active'));
+        li.classList.add('active');
+        taskFrame.src = task.file;
+      });
+      taskList.appendChild(li);
+
+  
+      if (index === 0) {
+        li.classList.add('active');
+        taskFrame.src = task.file;
+      }
+    });
+  </script>
+</body>
+</html>
